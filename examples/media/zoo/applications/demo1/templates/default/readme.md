@@ -24,4 +24,8 @@ You can skip it, but know that if you ever visit a tag page it will result in a 
 
 ### Advanced Template Files
 
+- **submission.php**
+This file will be used when you link to your App category, and whenever you click on a category link.
+You can skip it, but know that if you ever visit a category page it will result in a 500 error
+
 
