@@ -5,4 +5,4 @@
  * adding new paths for the application, changing the way the 
  * actions are dispatched etc.
  */
-class Demo1Application extends Application {}
+class DemoApplication extends Application {}

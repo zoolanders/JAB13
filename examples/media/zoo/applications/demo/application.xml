@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <application>
-	<name>Demo1</name>
-	<group>demo1</group> <!-- Has to be the App folder name -->
+	<name>Demo</name>
+	<group>demo</group> <!-- Has to be the App folder name -->
 	<version>1.0</version>
 	<creationDate>May 2013</creationDate>
 	<author>ZOOlanders</author>
@@ -9,10 +9,7 @@
 	<authorUrl>http://www.zoolanders.com</authorUrl>
     <copyright>Copyright (C) JOOlanders SL</copyright>
     <license>GNU GPL v3</license>
-	<description><![CDATA[
-				Description of the demo app for ZOO
-				]]>
-	</description>
+	<description>Description of the demo app for ZOO</description>
 	<!-- 
 		Config Options for the Application.
 		Displayed in the App Configuration Panel
