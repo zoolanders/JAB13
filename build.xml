@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ An ant build file for joomla install packages
+
+ @author     Dioscouri Design
+ @link     http://www.dioscouri.com
+ @copyright Copyright (C) 2007 Dioscouri Design. All rights reserved.
+ @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.php
+-->
+<project name="ZOO" default="build" basedir=".">
+    <description>Ant Build File for Joomla</description>
+
+    <!-- load variables from config file -->
+    <property name="cfg.configFile" location="antconfig.txt" />
+    <loadproperties srcfile="${cfg.configFile}" />
+
+    <!--config file values
+    cfg.name=paket
+    cfg.buildDir=packages
+    cfg.localhostRoot=c:/www
+
+    ftp.server=
+    ftp.user=
+    ftp.password=
+    ftp.dir=
+
+    rsync.server=
+    rsync.user=
+    rsync.dir=
+    -->
+
+    <!-- auto values but should be checked -->
+    <property name="cfg.comName" value="${cfg.name}" />
+    <property name="cfg.comDir" value="${basedir}/${cfg.comName}" />
+    <property name="cfg.buildVersionDir" value="${cfg.buildDir}" />
+	<property name="cfg.plgPrefix" value="tienda_plugin_" />
+	<property name="cfg.modPrefix" value="mod_tienda_" />
+	<property name="cfg.langPrefix" value="tienda_translation_" />
+	<property name="cfg.langDir" value="${basedir}/language_packages" />
+    <property name="cfg.adminFilesDir" location="${cfg.comDir}/admin" />
+    <property name="cfg.siteFilesDir" location="${cfg.comDir}/site" />
+    <property name="cfg.extensionsDir" location="${basedir}/extensions" />
+    <property name="cfg.mediaFilesDir" location="${cfg.comDir}/media" />
+    <property name="cfg.adminLangDir" location="${cfg.comDir}/languages/admin" />
+    <property name="cfg.siteLangDir" location="${cfg.comDir}/languages/site" />
+    <property name="cfg.pluginChartsDir" location="${cfg.comDir}/${cfg.comName}_plugin_charts" />
+    <property name="cfg.pluginPaymentDir" location="${cfg.comDir}/${cfg.comName}_plugin_payment" />
+    <property name="cfg.pluginReportDir" location="${cfg.comDir}/${cfg.comName}_plugin_report" />
+	<property name="cfg.pluginShippingDir" location="${cfg.comDir}/${cfg.comName}_plugin_shipping" />
+    <property name="cfg.pluginToolDir" location="${cfg.comDir}/${cfg.comName}_plugin_tool" />
+	<property name="cfg.aux" value="${basedir}/auxiliary_extensions" />
+	<property name="cfg.apps" value="${basedir}/apps" />
+
+    <!-- some settings that are currently unused -->
+    <property name="cfg.addversion" value="true" />
+    <property name="cfg.versionprefix" value="v" />
+    <property name="cfg.adddate" value="true" />
+    <property name="cfg.datefmt" value="yyyy-MM-dd" />
+    <property name="cfg.dateloc" value="en,UK" />
+
+    <target name="build" depends="update_localhost" />
+
+    <target name="update_localhost" description="attemps to update files on localhost server with files from working directory">
+        <condition property="destdir" value="${tmpdir}" else="${cfg.localhostRoot}" >
+            <available file="${tmpdir}" type="dir" />
+        </condition>
+    	<copy todir="${cfg.localhostRoot}/" preservelastmodified="true" overwrite="true">
+            <fileset dir="${basedir}/examples" />
+        </copy>
+        
+    </target>
+
+    <target name="init" depends="clean" description="creates necessary directory to build with">
+        <mkdir dir="${cfg.buildDir}" />
+    </target>
+
+    <target name="build_component" depends="init" description="packages the final component file">
+    	<zip destfile="${cfg.buildDir}/mod_zooevents_beta1.zip" basedir="${basedir}/mod_zooevent" />
+    	<zip destfile="${cfg.buildDir}/app_zooevents_beta1.zip" basedir="${basedir}/app_zooevents" />
+    </target>
+
+    <target name="build_plugins" depends="init" description="packages any plugins">
+    	
+    </target>
+
+    <target name="build_modules" depends="init" description="packages any modules">
+    	
+    </target>
+
+    <target name="build_languages" depends="init" description="packages any languages">
+        
+    </target>
+	
+	<!-- BUILD EXTRA APPS -->
+	<target name="build_apps" depends="init" description="packages any apps">
+	    	<!-- Example: <zip destfile="${cfg.buildDir}/apps/app.zip" basedir="${cfg.apps}/app" />-->
+	</target>
+
+    <target name="build_extensions" depends="clean, init, build_plugins, build_modules" description="builds installable packages of both modules and plugins">
+    </target>
+
+    <target name="clean" description="Destroys all generated files and dirs">
+        <delete dir="${cfg.buildDir}/" />
+    </target>
+
+    <target name="rsync" description="attemps to synchronize files on a remote server with files from working directory">
+        <exec executable="mktemp" outputproperty="rawtmpdir">
+            <arg line="-d -t XXXXXXXXXXXX" />
+        </exec>
+        <exec executable="cygpath" osfamily="windows" outputproperty="wintmpdir">
+            <arg line="-w ${rawtmpdir}" />
+        </exec>
+        <condition property="tmpdir" value="${wintmpdir}" else="${rawtmpdir}">
+            <os family="windows" />
+        </condition>
+        <antcall target="update_localhost"></antcall>
+        <exec executable="rsync" dir="${tmpdir}">
+            <arg line="-aOvz --chmod=g+w,Da+rX,Fa+r,F-X --exclude .svn . ${rsync.user}@${rsync.server}:${rsync.dir}/" />
+        </exec>
+        <delete dir="${tmpdir}" />
+    </target>
+
+    <target name="upload" description="attempts to upload build file to ftp server">
+        <fileset id="ftp.upload.fileset" dir="${cfg.buildVersionDir}/components">
+            <include name="*.zip" />
+        </fileset>
+
+        <echo>FTP target is ${ftp.server}</echo>
+        <ftp server="${ftp.server}" userid="${ftp.user}" password="${ftp.password}" action="put" remotedir="${ftp.dir}">
+            <fileset refid="ftp.upload.fileset" />
+        </ftp>
+    </target>
+
+    <macrodef name="echo-fileset" description="creates a printable directory listing">
+        <attribute name="filesetref" />
+        <sequential>
+            <pathconvert pathsep="&lt;/filename&gt;${line.separator}&lt;filename&gt;" property="@{filesetref}.echopath">
+                <path>
+                    <fileset refid="@{filesetref}" />
+                </path>
+            </pathconvert>
+            <echo message="${@{filesetref}.echopath}" file="${cfg.xmlfile}" append="true" />
+        </sequential>
+    </macrodef>
+</project>

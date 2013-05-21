@@ -1,0 +1,9 @@
+cfg.name=zooedit
+cfg.versionDir= 
+cfg.buildDir=packages
+cfg.localhostRoot=/Users/skullbock/Sites/jab13/
+cfg.xmlfile=files.txt 
+ftp.server= 
+ftp.user= 
+ftp.password= 
+ftp.dir=
