@@ -11,31 +11,11 @@
 		<position name="title">Title</position>
 		<position name="media">Media</position>
 		<position name="description">Description</position>
-		<position name="specification">Specification</position>
 		<position name="bottom">Bottom</position>
-		<position name="related">Related</position>
 	</positions>
 	<positions layout="teaser">
 		<position name="title">Title</position>
 		<position name="media">Media</position>
 		<position name="description">Description</position>
-		<position name="specification">Specification</position>
-		<position name="links">Links</position>
-	</positions>
-	<positions layout="related">
-		<position name="title">Title</position>
-		<position name="media">Media</position>
-		<position name="description">Description</position>
-		<position name="specification">Specification</position>
-		<position name="links">Links</position>
-	</positions>
-	<positions layout="feed">
-		<position name="description">Description</position>
-	</positions>
-	<positions layout="submission">
-		<position name="content">Content</position>
-		<position name="media">Media</position>
-		<position name="meta">Meta</position>
-		<position name="administration">Administration</position>
-	</positions>
+	</positions
 </renderer>
