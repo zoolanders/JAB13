@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template>
+	<name>Default</name>
+	<version>1.0</version>
+	<creationDate>May 2013</creationDate>
+	<author>ZOOlanders</author>
+	<authorEmail>info@zoolanders.com</authorEmail>
+	<authorUrl>http://www.zoolanders.com</authorUrl>
+    <copyright>Copyright (C) JOOlanders SL</copyright>
+    <license>GPL v3</license>
+	<description>Default template for the Demo App</description>
+	<!-- 
+		List of parameters for the category
+		The template can access them for each category
+		Usually these are purely graphic settings
+	-->
+	<params group="category">
+		<param name="show_title" type="radio" default="1" label="Title" description="Show/Hide title">
+			<option value="0">Hide</option>
+			<option value="1">Show</option>
+		</param>
+		<param name="show_description" type="radio" default="1" label="Description" description="Show/Hide description">
+			<option value="0">Hide</option>
+			<option value="1">Show</option>
+		</param>
+		<param name="show_image" type="radio" default="1" label="Image" description="Show/Hide image">
+			<option value="0">Hide</option>
+			<option value="1">Show</option>
+		</param>
+		<param name="@spacer" type="spacer" />
+	</params>
+	<!-- 
+		List of parameters for the item
+		The template can access them for each item
+		These are accessible from the item view
+	-->
+	<params group="item">
+	</params>
+</template>

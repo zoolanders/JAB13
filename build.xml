@@ -58,77 +58,31 @@
     <property name="cfg.datefmt" value="yyyy-MM-dd" />
     <property name="cfg.dateloc" value="en,UK" />
 
-    <target name="build" depends="update_localhost" />
-
-    <target name="update_localhost" description="attemps to update files on localhost server with files from working directory">
+    <target name="demo1" description="attemps to update files on localhost server with files from working directory">
         <condition property="destdir" value="${tmpdir}" else="${cfg.localhostRoot}" >
             <available file="${tmpdir}" type="dir" />
         </condition>
     	<copy todir="${cfg.localhostRoot}/" preservelastmodified="true" overwrite="true">
-            <fileset dir="${basedir}/examples" />
+            <fileset dir="${basedir}/examples/step1" />
         </copy>
         
     </target>
 
-    <target name="init" depends="clean" description="creates necessary directory to build with">
-        <mkdir dir="${cfg.buildDir}" />
-    </target>
-
-    <target name="build_component" depends="init" description="packages the final component file">
-    	<zip destfile="${cfg.buildDir}/mod_zooevents_beta1.zip" basedir="${basedir}/mod_zooevent" />
-    	<zip destfile="${cfg.buildDir}/app_zooevents_beta1.zip" basedir="${basedir}/app_zooevents" />
-    </target>
-
-    <target name="build_plugins" depends="init" description="packages any plugins">
-    	
-    </target>
-
-    <target name="build_modules" depends="init" description="packages any modules">
-    	
-    </target>
-
-    <target name="build_languages" depends="init" description="packages any languages">
+    <target name="demo2" description="attemps to update files on localhost server with files from working directory">
+        <condition property="destdir" value="${tmpdir}" else="${cfg.localhostRoot}" >
+            <available file="${tmpdir}" type="dir" />
+        </condition>
+        <copy todir="${cfg.localhostRoot}/" preservelastmodified="true" overwrite="true">
+            <fileset dir="${basedir}/examples/step2" />
+        </copy>
         
     </target>
-	
-	<!-- BUILD EXTRA APPS -->
-	<target name="build_apps" depends="init" description="packages any apps">
-	    	<!-- Example: <zip destfile="${cfg.buildDir}/apps/app.zip" basedir="${cfg.apps}/app" />-->
-	</target>
 
-    <target name="build_extensions" depends="clean, init, build_plugins, build_modules" description="builds installable packages of both modules and plugins">
-    </target>
-
-    <target name="clean" description="Destroys all generated files and dirs">
-        <delete dir="${cfg.buildDir}/" />
-    </target>
-
-    <target name="rsync" description="attemps to synchronize files on a remote server with files from working directory">
-        <exec executable="mktemp" outputproperty="rawtmpdir">
-            <arg line="-d -t XXXXXXXXXXXX" />
-        </exec>
-        <exec executable="cygpath" osfamily="windows" outputproperty="wintmpdir">
-            <arg line="-w ${rawtmpdir}" />
-        </exec>
-        <condition property="tmpdir" value="${wintmpdir}" else="${rawtmpdir}">
-            <os family="windows" />
+    <target name="remove_app" description="attemps to update files on localhost server with files from working directory">
+        <condition property="destdir" value="${tmpdir}" else="${cfg.localhostRoot}" >
+            <available file="${tmpdir}" type="dir" />
         </condition>
-        <antcall target="update_localhost"></antcall>
-        <exec executable="rsync" dir="${tmpdir}">
-            <arg line="-aOvz --chmod=g+w,Da+rX,Fa+r,F-X --exclude .svn . ${rsync.user}@${rsync.server}:${rsync.dir}/" />
-        </exec>
-        <delete dir="${tmpdir}" />
-    </target>
-
-    <target name="upload" description="attempts to upload build file to ftp server">
-        <fileset id="ftp.upload.fileset" dir="${cfg.buildVersionDir}/components">
-            <include name="*.zip" />
-        </fileset>
-
-        <echo>FTP target is ${ftp.server}</echo>
-        <ftp server="${ftp.server}" userid="${ftp.user}" password="${ftp.password}" action="put" remotedir="${ftp.dir}">
-            <fileset refid="ftp.upload.fileset" />
-        </ftp>
+       <delete dir="${cfg.localhostRoot}/media/zoo/applications/demo" />        
     </target>
 
     <macrodef name="echo-fileset" description="creates a printable directory listing">

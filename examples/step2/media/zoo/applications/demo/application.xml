@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<application>
+	<name>Demo</name>
+	<group>demo</group> <!-- Has to be the App folder name -->
+	<version>1.0</version>
+	<creationDate>May 2013</creationDate>
+	<author>ZOOlanders</author>
+	<authorEmail>info@zoolanders.com</authorEmail>
+	<authorUrl>http://www.zoolanders.com</authorUrl>
+    <copyright>Copyright (C) JOOlanders SL</copyright>
+    <license>GNU GPL v3</license>
+	<description>Description of the demo app for ZOO</description>
+	<!-- 
+		Config Options for the Application.
+		Displayed in the App Configuration Panel
+		Useful for global parameters that can be used throughout the app
+	-->
+	<params group="application-config">
+		<param name="items_per_page" type="text" size="3" default="15" label="Items Per Page" description="Number of items to show on a page" />
+		<param name="item_order" type="zooitemorder" default="_itemname" label="Item Order" description="ITEM_ORDER" />
+		<param name="alpha_index" type="list" default="3" label="Alpha Index" description="ALPHA_INDEX_DESCRIPTION">
+			<option value="1">Only Categories</option>
+			<option value="2">Only Items</option>
+			<option value="3">Both</option>
+		</param>
+		<param name="show_empty_categories" type="radio" default="0" label="Show Empty Categories" description="SHOW_EMPTY_CATEGORIES_DESC">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</param>
+	</params>
+	<!--
+		Config Options for each Category
+		These parameter can be used to override the App ones
+		Useful for custom Category options, or to override the global category params set in the application
+	-->
+	<params group="category-config">
+		<param name="items_per_page" type="textglobal" size="3" default="15" label="Items Per Page" description="Number of items to show on a page" />
+		<param name="item_order" type="zooitemorderglobal" default="_itemname" label="Item Order" description="ITEM_ORDER" />
+		<param name="show_empty_categories" type="radioglobal" default="0" label="Show Empty Categories" description="SHOW_EMPTY_CATEGORIES_DESC" />
+	</params>
+	<!--
+		Additional content information for the frontpage.
+		Displayed in the frontpage content tab.
+		Useful for extra label, titles, etc for the frontpage template
+	-->
+	<params group="application-content">
+		<param name="title" type="text" label="Title" description="Set a frontpage title." />
+		<param name="image" type="zooimage" label="Image" description="Choose a frontpage image." />
+		<param name="categories_title" type="text" label="Categories Title" description="Set a title above the displayed sub categories." />
+		<param name="items_title" type="text" label="Items Title" description="Set a title above the displayed items." />
+	</params>
+	<!--
+		Additional content information for the category.
+		Displayed in the category content tab.
+		Useful for extra label, titles, etc for the category template
+	-->
+	<params group="category-content">
+		<param name="teaser_description" type="textarea" label="Teaser Description" description="Set a teaser description for this category. It will be displayed in the parent category." />
+		<param name="teaser_image" type="zooimage" label="Teaser Image" description="Choose a teaser image for this category. It will be displayed in the parent category." />
+		<param name="image" type="zooimage" label="Image" description="Choose a category image." />
+		<param name="categories_title" type="text" label="Categories Title" description="Set a title above the categories." />
+		<param name="items_title" type="text" label="Items Title" description="Set a title above the items." />
+	</params>
+	<!--
+		Additional content information for the items.
+		Displayed in the item content tab.
+		Useful for extra content, like metadata, authors, etc
+	-->
+	<params group="item-content">
+	</params>
+</application>
