@@ -17,5 +17,5 @@
 		<position name="title">Title</position>
 		<position name="media">Media</position>
 		<position name="description">Description</position>
-	</positions
+	</positions>
 </renderer>

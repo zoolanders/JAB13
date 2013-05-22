@@ -5,6 +5,8 @@ defined('_JEXEC') or die('Restricted access');
 
 // include assets css/js
 //$this->app->document->addStylesheet($this->template->resource.'assets/css/zoo.css');
+
+$image = $this->application->getImage('content.image')
 ?>
 
 <div id="yoo-zoo" class="yoo-zoo">
@@ -19,9 +21,9 @@ defined('_JEXEC') or die('Restricted access');
 		<h1 class="title"><?php echo $this->application->getParams()->get('content.title'); ?></h1>
 	<?php endif; ?>
 
-	<?php if ($this->params->get('template.show_description') || $this->params->get('template.show_image')) : ?>
+	<?php if ($this->params->get('template.show_description') || ($this->params->get('template.show_image') && $image)) : ?>
 	<div class="description">
-		<?php if ($this->params->get('template.show_image')) : ?>
+		<?php if ($this->params->get('template.show_image') && $image) : ?>
 			<img class="image" src="<?php echo $image['src']; ?>" title="<?php echo $this->application->getParams()->get('content.title'); ?>" alt="<?php echo $this->application->getParams()->get('content.title'); ?>" <?php echo $image['width_height']; ?>/>
 		<?php endif; ?>
 		<?php if ($this->params->get('template.show_description')) echo $this->application->getText($this->application->description); ?>
@@ -41,5 +43,30 @@ defined('_JEXEC') or die('Restricted access');
 			</a>
 		</div>
 	
-	<?php endforeach; ?>
+	<?php 
+	endforeach; 
+	?>
+
+	<?php
+	/**
+	 * Let's also render the frontpage items
+	 */
+	foreach ($this->items as $item) :
+	?>
+
+	<div class="item">
+		<?php 
+		/**
+		 * With this call, you can render the teaser item layout in the renderer/item folder. You need to pass
+		 * the view and the item as an argument.
+		 *
+		 * As a general rule:
+		 * $this->renderer->render('folder.layout', array('list' => 'of', 'arguments' => 'passed'));
+		 */
+		echo $this->renderer->render('item.teaser', array('view' => $this, 'item' => $item)); ?>
+	</div>
+
+	<?php 
+	endforeach; 
+	?>
 </div>

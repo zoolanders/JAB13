@@ -46,8 +46,6 @@
 	<params group="application-content">
 		<param name="title" type="text" label="Title" description="Set a frontpage title." />
 		<param name="image" type="zooimage" label="Image" description="Choose a frontpage image." />
-		<param name="categories_title" type="text" label="Categories Title" description="Set a title above the displayed sub categories." />
-		<param name="items_title" type="text" label="Items Title" description="Set a title above the displayed items." />
 	</params>
 	<!--
 		Additional content information for the category.
@@ -58,8 +56,6 @@
 		<param name="teaser_description" type="textarea" label="Teaser Description" description="Set a teaser description for this category. It will be displayed in the parent category." />
 		<param name="teaser_image" type="zooimage" label="Teaser Image" description="Choose a teaser image for this category. It will be displayed in the parent category." />
 		<param name="image" type="zooimage" label="Image" description="Choose a category image." />
-		<param name="categories_title" type="text" label="Categories Title" description="Set a title above the categories." />
-		<param name="items_title" type="text" label="Items Title" description="Set a title above the items." />
 	</params>
 	<!--
 		Additional content information for the items.
