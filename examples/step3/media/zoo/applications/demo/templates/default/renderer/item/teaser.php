@@ -11,7 +11,7 @@ defined('_JEXEC') or die('Restricted access');
 	 * Render only if there are elements presents and those elements has values / has to be rendered
 	 */
 	if ($this->checkPosition('media')) : ?>
-	<div class="pos-media <?php echo 'media-'.$view->params->get('template.item_media_alignment'); ?>">
+	<div class="pos-media float-left width25 <?php echo 'media-'.$view->params->get('template.item_media_alignment'); ?>">
 		<?php
 		/**
 		 * Renders the elements in this position
