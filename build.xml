@@ -88,6 +88,16 @@
         
     </target>
 
+    <target name="demo4" description="attemps to update files on localhost server with files from working directory">
+        <condition property="destdir" value="${tmpdir}" else="${cfg.localhostRoot}" >
+            <available file="${tmpdir}" type="dir" />
+        </condition>
+        <copy todir="${cfg.localhostRoot}/" preservelastmodified="true" overwrite="true">
+            <fileset dir="${basedir}/examples/step4" />
+        </copy>
+        
+    </target>
+
     <target name="remove_app" description="attemps to update files on localhost server with files from working directory">
         <condition property="destdir" value="${tmpdir}" else="${cfg.localhostRoot}" >
             <available file="${tmpdir}" type="dir" />
