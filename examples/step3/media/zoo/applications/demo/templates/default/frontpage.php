@@ -6,7 +6,7 @@ defined('_JEXEC') or die('Restricted access');
 // include assets css/js
 //$this->app->document->addStylesheet($this->template->resource.'assets/css/zoo.css');
 
-$image = $this->category->getImage('content.image');
+$image = $this->application->getImage('content.image');
 ?>
 
 <div id="yoo-zoo" class="yoo-zoo">
@@ -18,37 +18,28 @@ $image = $this->category->getImage('content.image');
 	 * They are already divided into the right sections as in the xml (template, content, etc)
 	 */
 	if ($this->params->get('template.show_title')) : ?>
-	<h1 class="title"><?php echo $this->category->name; ?></h1>
+		<h1 class="title"><?php echo $this->application->getParams()->get('content.title'); ?></h1>
 	<?php endif; ?>
 
-	<?php if ($this->params->get('template.show_description') || $this->params->get('template.show_image')) : ?>
+	<?php if ($this->params->get('template.show_description') || ($this->params->get('template.show_image') && $image)) : ?>
 	<div class="description">
-		<?php if ($this->params->get('template.show_image')) : ?>
-			<img class="image" src="<?php echo $image['src']; ?>" title="<?php echo $this->category->name; ?>" alt="<?php echo $this->category->name; ?>" <?php echo $image['width_height']; ?>/>
+		<?php if ($this->params->get('template.show_image') && $image) : ?>
+			<img class="image" src="<?php echo $image['src']; ?>" title="<?php echo $this->application->getParams()->get('content.title'); ?>" alt="<?php echo $this->application->getParams()->get('content.title'); ?>" <?php echo $image['width_height']; ?>/>
 		<?php endif; ?>
-		<?php if ($this->params->get('template.show_description')) echo $this->category->getText($this->category->description); ?>
+		<?php if ($this->params->get('template.show_description')) echo $this->application->getText($this->application->description); ?>
 	</div>
 	<?php endif; ?>
 
 	<?php
 	/**
-	 * Now let's show the subcategories if present
+	 * Now let's load a partial template file for the root categories
 	 */
-	foreach ($this->selected_categories as $category):
+	echo $this->partial('categories');
 	?>
-	
-		<div class="category">
-			<a href="<?php echo $this->app->route->category($category); ?>">
-				<?php echo $category->name; ?>
-			</a>
-		</div>
-	
-	<?php endforeach; ?>
-
 
 	<?php
 	/**
-	 * Let's also render the items in this category
+	 * Let's also render the frontpage items
 	 */
 	foreach ($this->items as $item) :
 	?>
@@ -65,5 +56,7 @@ $image = $this->category->getImage('content.image');
 		echo $this->renderer->render('item.teaser', array('view' => $this, 'item' => $item)); ?>
 	</div>
 
-	<?php endforeach; ?>
+	<?php 
+	endforeach; 
+	?>
 </div>

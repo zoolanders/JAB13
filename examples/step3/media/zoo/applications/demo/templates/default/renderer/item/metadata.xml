@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<!-- 
+	List here all the layouts.
+	The name attribute has to be the file name (without extension) of the layout file
+	The name tag is the one used for displaying in the backend
+	The description tag fills the tooltip of the layout name in the backend
+	The type attribute can be
+		- related
+		- submission
+	The type attribute will be used for special layouts, like the related items element layout or
+	the submission layout
+	-->
+	<layout name="full">
+		<name>Full</name>
+		<description>An item is rendered with the full layout in the item view.</description>
+	</layout>
+	<layout name="teaser">
+		<name>Teaser</name>
+		<description>An item is rendered with the teaser layout in the frontpage, category, alphaindex and tag view.</description>
+	</layout>
+	<layout name="related" type="related">
+		<name>Related</name>
+		<description>Choose this layout to render a related item.</description>
+	</layout>
+	<layout name="feed">
+		<name>Feed</name>
+		<description>An item is rendered with the feed layout for all kinds of feeds like RSS and Atom.</description>
+	</layout>
+	<layout name="submission" type="submission">
+		<name>Submission</name>
+		<description>An item is rendered with the submission layout in the submission view.</description>
+	</layout>
+</metadata>

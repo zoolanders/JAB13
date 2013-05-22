@@ -32,19 +32,10 @@ $image = $this->category->getImage('content.image');
 
 	<?php
 	/**
-	 * Now let's show the subcategories if present
+	 * Now let's load a partial template file for the subcategories
 	 */
-	foreach ($this->selected_categories as $category):
+	echo $this->partial('categories');
 	?>
-	
-		<div class="category">
-			<a href="<?php echo $this->app->route->category($category); ?>">
-				<?php echo $category->name; ?>
-			</a>
-		</div>
-	
-	<?php endforeach; ?>
-
 
 	<?php
 	/**
@@ -66,4 +57,10 @@ $image = $this->category->getImage('content.image');
 	</div>
 
 	<?php endforeach; ?>
+
+	<?php 
+	/**
+	 * Pagination! Partial as well
+	 */
+	echo $this->partial('pagination'); ?>
 </div>

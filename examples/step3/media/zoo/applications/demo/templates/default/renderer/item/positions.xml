@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<renderer>
+	<!--
+		List here the positions per layout
+		The layout attribute needs to be the layout file name (without extensions)
+		The Position name attribute need to be the one used by the layout code to load the position
+		The Position tag contains the name displayed in the backend when assigning elements to positions
+	-->
+	<positions layout="full">
+		<position name="top">Top</position>
+		<position name="title">Title</position>
+		<position name="media">Media</position>
+		<position name="description">Description</position>
+		<position name="bottom">Bottom</position>
+	</positions>
+	<positions layout="teaser">
+		<position name="title">Title</position>
+		<position name="media">Media</position>
+		<position name="description">Description</position>
+	</positions>
+</renderer>
