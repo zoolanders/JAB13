@@ -4,7 +4,7 @@
 defined('_JEXEC') or die('Restricted access');
 
 // include assets css/js
-//$this->app->document->addStylesheet($this->template->resource.'assets/css/zoo.css');
+$this->app->document->addStylesheet($this->template->resource.'assets/style.css');
 
 $image = $this->category->getImage('content.image');
 ?>
@@ -39,24 +39,11 @@ $image = $this->category->getImage('content.image');
 
 	<?php
 	/**
-	 * Let's also render the items in this category
+	 * Now let's load a partial template file for the items
 	 */
-	foreach ($this->items as $item) :
+	echo $this->partial('items');
 	?>
-
-	<div class="item">
-		<?php 
-		/**
-		 * With this call, you can render the teaser item layout in the renderer/item folder. You need to pass
-		 * the view and the item as an argument.
-		 *
-		 * As a general rule:
-		 * $this->renderer->render('folder.layout', array('list' => 'of', 'arguments' => 'passed'));
-		 */
-		echo $this->renderer->render('item.teaser', array('view' => $this, 'item' => $item)); ?>
-	</div>
-
-	<?php endforeach; ?>
+	
 
 	<?php 
 	/**

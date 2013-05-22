@@ -22,13 +22,7 @@ defined('_JEXEC') or die('Restricted access');
 		 *
 		 * defaults: block, comma, default, hypen, inline, list, paragraph, pipe
 		 */
-		echo $this->renderPosition('top', array('style' => 'block')); ?>
-	</div>
-	<?php endif; ?>
-
-	<?php if ($this->checkPosition('media')) : ?>
-	<div class="pos-media">
-		<?php echo $this->renderPosition('media', array('style' => 'block')); ?>
+		echo $this->renderPosition('top', array('style' => 'stronglabel')); ?>
 	</div>
 	<?php endif; ?>
 
@@ -36,14 +30,22 @@ defined('_JEXEC') or die('Restricted access');
 	<h1 class="pos-title"><?php echo $this->renderPosition('title'); ?></h1>
 	<?php endif; ?>
 
-	<?php if ($this->checkPosition('description')) : ?>
-	<div class="pos-description">
-		<?php echo $this->renderPosition('description', array('style' => 'block')); ?>
+	<div class="content">
+		<?php if ($this->checkPosition('media')) : ?>
+		<div class="pos-media float-left clearfix">
+			<?php echo $this->renderPosition('media', array('style' => 'block')); ?>
+		</div>
+		<?php endif; ?>
+
+		<?php if ($this->checkPosition('description')) : ?>
+		<div class="pos-description">
+			<?php echo $this->renderPosition('description', array('style' => 'block')); ?>
+		</div>
+		<?php endif; ?>
 	</div>
-	<?php endif; ?>
 
 	<?php if ($this->checkPosition('bottom')) : ?>
-	<div class="pos-bottom">
+	<div class="pos-bottom clearfix">
 		<?php echo $this->renderPosition('bottom', array('style' => 'block')); ?>
 	</div>
 	<?php endif; ?>

@@ -4,7 +4,7 @@
 defined('_JEXEC') or die('Restricted access');
 
 // You could include CSS here
-// $this->app->document->addStylesheet($this->template->resource.'assets/css/zoo.css');
+$this->app->document->addStylesheet($this->template->resource.'assets/style.css');
 
 ?>
 
