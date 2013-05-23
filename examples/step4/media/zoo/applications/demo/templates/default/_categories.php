@@ -1,4 +1,4 @@
-<div class="categories">
+<div class="categories clearfix">
 	<?php 
 	/**
 	 * Let's load a partial for each category

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<element type="colorpicker" group="ZOOlanders">
+	<name>ColorPicker</name>
+	<author>ZOOlanders</author>
+	<creationDate>July 2011</creationDate>
+	<copyright>Copyright (C) 2011 JOOlanders, SL</copyright>
+	<authorEmail>info@zoolanders.com</authorEmail>
+	<authorUrl>http://www.zoolanders.com</authorUrl>
+	<version>2.5</version>
+	<description>ColorPicker Input</description>
+	<params>
+		<param name="default" type="text" default="" label="Default" description="Default value, ex: #FF0000" />
+	</params>
+	<params group="render">
+		<param name="show_as" type="list" default="color" label="Show As" description="">
+			<option value="color">Box Color</option>
+			<option value="hex">Hex Code</option>
+		</param>
+		<param name="width" type="text" default="25" label="Box Color Width" description="" />
+		<param name="height" type="text" default="25" label="Box Color Height" description="" />
+		<param name="border_size" type="text" default="1" label="Box Border Width" description="" />
+		<param name="border_color" type="text" default="#000000" label="Box Border Color" description="" />
+	</params>
+</element>

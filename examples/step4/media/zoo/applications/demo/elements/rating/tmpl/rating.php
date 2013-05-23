@@ -12,6 +12,8 @@ $id = $this->identifier.'-'.uniqid();
 ?>
 <div id="<?php echo $id; ?>" class="yoo-zoo rating">
 
+	Change The rating element
+	
 	<div class="rating-container star<?php echo $stars; ?>">
 		<div class="previous-rating" style="width: <?php echo intval($rating / $stars * 100); ?>%;"></div>
 
