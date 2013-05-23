@@ -1,0 +1,22 @@
+.pos-media {
+	margin-right: 10px;
+}
+
+.item .pos-top {
+	margin-bottom: 20px;
+}
+
+.item .element-itemtag a {
+	border: 1px solid #ccc;
+	padding: 10px;
+	margin: 5px;
+}
+
+.item .element-itemtag a:first-child {
+	margin-left: 0;
+}
+
+.item .content {
+	min-height: 500px;
+	margin-bottom: 20px;
+}
