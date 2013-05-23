@@ -13,6 +13,13 @@ class DemoApplication extends Application {
 	public function dispatch() {
 
 		/**
+		 * Let's load extra controllers
+		 */
+		if ($path = $this->app->path->path('applications:demo/controllers')) {
+			$this->app->path->register($path, 'controllers');
+		}
+
+		/**
 		 * Let's bind an event to each category loading
 		 */
 		$this->app->event->dispatcher->connect('category:init', array($this, 'categoryLoaded'));

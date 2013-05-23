@@ -1,0 +1,25 @@
+Changelog
+------------
+
+------
+2.5
+------
+ ^ ZOO 2.5 transition
+
+------
+2.4.1
+------
+ ^ Made repeatable
+
+------
+2.4.0
+------
+Initial Release
+
+* -> Security Fix
+# -> Bug Fix
+$ -> Language fix or change
++ -> Addition
+^ -> Change
+- -> Removed
+! -> Note

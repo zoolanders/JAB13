@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<element type="jab" group="ZOOlanders">
+	<name>JAB13</name>
+	<author>ZOOlanders</author>
+	<creationDate>May 2013</creationDate>
+	<copyright>Copyright (C) 2011 JOOlanders, SL</copyright>
+	<authorEmail>info@zoolanders.com</authorEmail>
+	<authorUrl>http://www.zoolanders.com</authorUrl>
+	<version>1.0</version>
+	<description>JAB13 Demo Element</description>
+	<params>
+	</params>
+	<params group="render">
+	</params>
+</element>
