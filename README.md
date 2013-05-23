@@ -2,6 +2,7 @@ JAB13
 =====
 
 The examples are divided into steps for the presentation
+You can also download the finished app ready to install in zoo (examples/app.1.0.zip)
 
 # Steps
 
